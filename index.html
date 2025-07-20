@@ -1,0 +1,1129 @@
+                                                 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: gray; color: purple;
+    font-style: italic; font-weight: bold; font-size: 20px;}
+    section { display: none; }
+    .active { display: block; }
+    .admin-btn { display: none; }
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 5px; 
+    color: aqua; }
+    th { background: black; }
+    input, button { margin: 5px 0; }
+    /* Animated login section */
+#login {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, lime, purple);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 1s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+}
+    #rules {
+       max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, black, aqua);
+      color: red;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 3s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+      
+    }
+    #rules:hover {
+      transform: scale(1.02);
+  background-color: blue;
+      border: 4px red double;
+    }
+    #rules button:hover {
+      color: black;
+      background-color: red;
+      border: 4px red double;
+    }
+
+#login:hover {
+  transform: scale(1.02);
+  background-color: lime;
+}
+    h1 {
+       text-align: center;
+      text-decoration: double underline blue;
+      text-decoration-thickness: px; color:  lime; 
+    }
+    h6 {
+       text-align: center;
+      text-decoration: double underline white;
+      text-decoration-thickness: px; color:  aqua; font-size: 30px;
+    }
+
+#login h2 {
+  text-align: start;
+  margin-bottom: 20px;
+  color: aqua;
+   border: 6px red double;
+  width:100px;
+   
+    font-style: italic; font-weight: bold; font-size: 30px;
+}
+    #rules h2 {
+      text-align: start;
+  margin-bottom: 20px;
+  color: aqua;
+   border: 6px lime double;
+      width: 100px;
+   
+    font-style: italic; font-weight: bold; font-size: 30px;
+    }
+    h3{
+      border: 6px red double;
+    }
+
+#login input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  border: 4px double;
+  background-color: pink;
+      color: blue;
+  
+}
+
+#login input:focus {
+  border-color: blue;
+  outline: none;
+  
+}
+    #login input:hover {
+      background-color: black;
+      color: red;
+    }
+
+#login button {
+  width: 30%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 6px red double;
+}
+
+#login button:hover {
+  background-color: aqua;
+  color: red;
+  border: 4px red double;
+}
+    #category {
+      max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, gray, blue);
+      color: lime;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 3s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+      
+    }
+    #category:hover {
+      transform: scale(1.02);
+  background-color: blue;
+      
+    }
+    #category button:hover {
+      color: lime;
+      background-color: purple;
+    }
+   
+    select{
+      color: red;
+      background-color: black;
+    }
+    #quiz {
+       max-width: 800px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, black, gray);
+      color: lime;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 3s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+    }
+    #quiz:hover {
+      transform: scale(1.02);
+  background-color: blue;
+      color: blue;
+      
+    }
+    #quiz button:hover {
+      color: lime;
+      background-color: purple;
+      border: 4px red double;
+    }
+   
+    #result {
+      max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, lime, blue);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 3s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+    }
+    #result:hover {
+      transform: scale(1.02);
+  background-color: blue;
+      color: blue;
+      
+    }
+     #result button:hover {
+      color: blue;
+      background-color: black;
+      border: 4px purple double;
+    }
+    #result h4 {
+      text-align: start;
+  margin-bottom: 20px;
+  color: red;
+   text-decoration: double underline purple;
+   
+    font-style: italic; font-weight: bold; font-size: 30px;
+    }
+    #leaderboard {
+      max-width: 600px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, gray, teal);
+      color: lime;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 3s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+      
+    }
+     #leaderboard h4 {
+      text-align: start;
+  margin-bottom: 20px;
+  color: blue;
+   text-decoration: double underline purple;
+   
+    font-style: italic; font-weight: bold; font-size: 30px;
+    }
+    #leaderboard:hover {
+      transform: scale(1.02);
+  background-color: blue;
+      color: blue;
+      
+    }
+     #leaderboard button:hover {
+      color: black;
+      background-color: red;
+      border: 4px purple double;
+    }
+    
+    #preview {
+      max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, gray, black);
+      color: lime;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlide 3s ease-out;
+  transition: transform 0.3s ease;
+  border: 4px double;
+    }
+    #preview:hover {
+      transform: scale(1.02);
+  background-color: lime;
+      color: aqua;
+      
+    }
+     #preview button:hover {
+      color: white;
+      background-color: aqua;
+      border: 4px purple double;
+    }
+    #preview h5 {
+      text-align: start;
+  margin-bottom: 20px;
+  color: pink;
+   text-decoration: double underline purple;
+   
+    font-style: italic; font-weight: bold; font-size: 30px;
+    }
+
+/* Animation keyframes */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+section {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+section.active {
+  display: block;
+  opacity: 1;
+}
+    img {
+  width: 250px;
+      display: block;
+      margin: 0 auto;}
+   img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+    
+    #img {
+      display: block;
+      margin: 0 auto;
+    }
+      
+   
+
+  </style>
+</head>
+<body>
+  <img src="C:\Users\hossa\OneDrive\Pictures\Screenshots\Screenshot 2025-05-28 004807.png" alt="Company Logo"  >
+  <h1>WELCOME ONLINE QIUZ EXAM</h1>
+  <h6>LEARN TO KNOW</h6>
+
+<!-- Login Section -->
+<section id="login" class="active">
+  <h2>Login</h2>
+  <input id="name" placeholder="Name"><br>
+  <input id="email" placeholder="Email"><br>
+  <input id="institution" placeholder="Institution"><br>
+  <button onclick="startLogin()">Login</button>
+</section>
+
+<!-- Rules Section -->
+<section id="rules" class="active">
+  <h2>Rules</h2>
+  <p>- One attempt only</p>
+  <p>- +1 for correct, -0.25 for wrong</p>
+  <button onclick="showCategory()">Start Quiz</button>
+</section>
+
+<!-- Category Selection -->
+<section id="category" class="active">
+  <h3>Select Category</h3>
+  <select id="categorySelect">
+    <option value="Math">Math</option>
+    <option value="English">English</option>
+    <option value="SscPhysics">SSC-Physics01</option>
+    <option value="SscMath">SSC-Math01</option>
+    <option value="SscMath02">SSC-Math02</option>
+  </select>
+  <button onclick="loadQuiz()">Continue</button>
+</section>
+
+<!-- Quiz Section -->
+<section id="quiz" class="active">
+  <h3>Quiz</h3>
+  <div id="timer">Time Left: <span id="time">60</span>s</div>
+  <form id="quizForm"></form>
+  <button onclick="submitQuiz()">Submit</button>
+</section>
+
+<!-- Result Section -->
+<section id="result" class="active">
+  <h4>Result</h4>
+  <p id="scoreDisplay"></p>
+  <button onclick="showLeaderboard()">View Leaderboard</button>
+</section>
+
+<!-- Leaderboard Section -->
+<section id="leaderboard" class="active">
+  <h4>Leaderboard</h4>
+  <label>Filter by Category:
+    <select id="filterCategory" onchange="renderLeaderboard()">
+      
+      <option value="Math">Math</option>
+      <option value="English">English</option>
+      <option value="SscPhysics">SSC-Physics01</option>
+      <option value="SscMath">SSC-Math01</option>
+      <option value="SscMath02">SSC-Math02</option>
+    </select>
+  </label>
+  <input id="searchInput" placeholder="Search name or email" oninput="renderLeaderboard()">
+  <button onclick="adminLogin()">Admin Login</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th><th>Name</th><th>Email</th><th>Institution</th><th>Score</th><th>Category</th><th>Preview</th><th class="admin-btn">Delete</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboardBody"></tbody>
+  </table>
+</section>
+
+<!-- Preview Section -->
+<section id="preview">
+  <h5>Preview Answers</h5>
+  <pre id="previewContent"></pre>
+  <button onclick="closePreview()">Close</button>
+</section>
+  
+  <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database-compat.js"></script>
+
+  
+<script>
+  // Firebase config & init
+  const firebaseConfig = {
+  apiKey: "AIzaSyAtAdHII6SOn9PS8hFhh0IW2eW4cuqV_9M",
+  authDomain: "jh-project-002.firebaseapp.com",
+  databaseURL: "https://jh-project-002-default-rtdb.firebaseio.com",
+  projectId: "jh-project-002",
+  storageBucket: "jh-project-002.firebasestorage.app",
+  messagingSenderId: "595995948031",
+  appId: "1:595995948031:web:71c8f45d526ec5eb5eedca",
+  measurementId: "G-43X0QQED1D"
+};
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>  
+  
+
+<script>
+let currentUser = {};
+let currentCategory = "";
+let timer;
+let timeLeft = 60;
+
+const questions = {
+  Math: [
+    { type: "mcq", question: "2 + 2 = ?", options: ["3", "4", "5"], answer: "4" },
+    { type: "checkbox", question: "Select even numbers", options: ["1", "2", "4"], answer: ["2", "4"] },
+    { type: "short", question: "Square root of 9?", answer: "3" }
+  ],
+  
+  English: [
+    { type: "mcq", question: "Synonym of fast?", options: ["Slow", "Quick", "Tiny"], answer: "Quick" },
+    { type: "checkbox", question: "Select vowels", options: ["A", "B", "E"], answer: ["A", "E"] },
+    { type: "short", question: "Antonym of cold?", answer: "hot" }
+  ],
+  
+  
+  SscPhysics: [
+  
+  { type: "mcq", question: "ভরের একক কী?", options: ["নিউটন", "জুল", "কেজি", "ওয়াট"], answer: "কেজি" },
+  { type: "mcq", question: "গতি বলতে কী বোঝায়?", options: ["স্থির থাকা", "দিক পরিবর্তন", "অবস্থান পরিবর্তন", "বেগ বৃদ্ধি"], answer: "অবস্থান পরিবর্তন" },
+  { type: "mcq", question: "বেগের একক কী?", options: ["m/s", "kg", "s", "m"], answer: "m/s" },
+  { type: "mcq", question: "বল কত প্রকার?", options: ["১", "২", "৩", "৪"], answer: "২" },
+  { type: "mcq", question: "নিউটনের প্রথম সূত্র কী?", options: ["গতি পরিবর্তন সূত্র", "বল সূত্র", "স্থিতি সূত্র", "ক্রিয়া-প্রতিক্রিয়া"], answer: "স্থিতি সূত্র" },
+  { type: "mcq", question: "ঘর্ষণ বল কোন বলের উদাহরণ?", options: ["নিষ্ক্রিয় বল", "সাংঘর্ষিক বল", "যোগ বল", "কেন্দ্রীপেটাল বল"], answer: "সাংঘর্ষিক বল" },
+  { type: "mcq", question: "পৃষ্ঠতলের উপর বস্তু স্থির থাকে কেন?", options: ["বল নেই", "ঘর্ষণ বল", "মাধ্যাকর্ষণ", "বায়ু চাপ"], answer: "ঘর্ষণ বল" },
+  { type: "mcq", question: "ভর ও ওজনের পার্থক্য কোথায়?", options: ["একক", "মাত্রা", "মান", "সবগুলো"], answer: "সবগুলো" },
+  { type: "mcq", question: "কোনটি বলের একক?", options: ["ওয়াট", "নিউটন", "কেজি", "জুল"], answer: "নিউটন" },
+  { type: "mcq", question: "কাজের একক কী?", options: ["ওয়াট", "নিউটন", "জুল", "কেজি"], answer: "জুল" },
+  { type: "mcq", question: "ক্ষমতার একক কী?", options: ["জুল", "ওয়াট", "নিউটন", "m/s"], answer: "ওয়াট" },
+  { type: "mcq", question: "স্থির বস্তুর উপর কাজ কখন হয়?", options: ["চাপ দিলে", "বল প্রয়োগ করলে", "স্থান পরিবর্তন হলে", "ওজন বাড়লে"], answer: "স্থান পরিবর্তন হলে" },
+  { type: "mcq", question: "যন্ত্রের কার্যক্ষমতা কী?", options: ["আউটপুট/ইনপুট", "ইনপুট/আউটপুট", "কাজ/সময়", "বল/ভর"], answer: "আউটপুট/ইনপুট" },
+  { type: "mcq", question: "তাপ কত প্রকার?", options: ["২", "৩", "৪", "৫"], answer: "৩" },
+  { type: "mcq", question: "তাপ পরিবাহিতা বেশি কোন ধাতুতে?", options: ["আয়রন", "অ্যালুমিনিয়াম", "তামা", "সিসা"], answer: "তামা" },
+  { type: "mcq", question: "একটি বস্তুর অভিকর্ষজ ত্বরণ কত?", options: ["8 m/s²", "9.8 m/s²", "10 m/s", "1 g"], answer: "9.8 m/s²" },
+  { type: "mcq", question: "গ্যাসের গতি নির্ভর করে—", options: ["আকার", "ভর", "তাপমাত্রা", "চাপ"], answer: "তাপমাত্রা" },
+  { type: "mcq", question: "ভাসমান বস্তুতে কোন বল কাজ করে?", options: ["ঘর্ষণ", "ভরবেগ", "প্লবতা", "বল"], answer: "প্লবতা" },
+  { type: "mcq", question: "তরঙ্গ কত প্রকার?", options: ["২", "৩", "৪", "৫"], answer: "২" },
+  { type: "mcq", question: "আলোর গতি কত?", options: ["3×10⁶ m/s", "3×10⁸ m/s", "1.5×10⁸ m/s", "9.8 m/s²"], answer: "3×10⁸ m/s" },
+  { type: "mcq", question: "ধ্বনি কোন তরঙ্গ?", options: ["অনুপাতিক", "অনুপ্রবেশযোগ্য", "যান্ত্রিক", "আলোক তরঙ্গ"], answer: "যান্ত্রিক" },
+  { type: "mcq", question: "দৃষ্টি দূরত্ব নির্ভর করে—", options: ["আলো", "আকার", "ভর", "গতি"], answer: "আলো" },
+  { type: "mcq", question: "লেন্সের একক কী?", options: ["ডায়াপ্টার", "নিউটন", "জুল", "ওয়াট"], answer: "ডায়াপ্টার" },
+  { type: "mcq", question: "তড়িৎ প্রবাহের একক কী?", options: ["ওম", "ভোল্ট", "অ্যাম্পিয়ার", "ওয়াট"], answer: "অ্যাম্পিয়ার" },
+  { type: "mcq", question: "ভোল্টেজ পরিমাপের যন্ত্র?", options: ["অ্যামিটার", "ভোল্টমিটার", "গ্যালভানোমিটার", "ওহমমিটার"], answer: "ভোল্টমিটার" },
+  { type: "mcq", question: "চুম্বক কত প্রকার?", options: ["১", "২", "৩", "৪"], answer: "২" },
+  { type: "mcq", question: "চুম্বক আকর্ষণ করে—", options: ["তামা", "কাঠ", "লোহা", "অ্যালুমিনিয়াম"], answer: "লোহা" },
+  { type: "mcq", question: "চুম্বকের উত্তর ও দক্ষিণ মেরু—", options: ["আলাদা হয়", "একই হয়", "বিচ্ছিন্ন হয় না", "সবই সঠিক"], answer: "বিচ্ছিন্ন হয় না" },
+  { type: "mcq", question: "একক সময়ে তড়িৎ শক্তি ব্যবহার হার কী?", options: ["ক্ষমতা", "কাজ", "তাপ", "বিদ্যুৎ"], answer: "ক্ষমতা" },
+  { type: "mcq", question: "বিদ্যুৎ উৎপাদনে ব্যবহৃত যন্ত্র?", options: ["মোটর", "জেনারেটর", "রেজিস্টর", "ক্যাপাসিটর"], answer: "জেনারেটর" },
+  { type: "mcq", question: "সূর্য থেকে শক্তি আসে—", options: ["তরঙ্গ", "উত্তাপ", "তড়িৎ", "তাপ বিকিরণ"], answer: "তাপ বিকিরণ" },
+  { type: "mcq", question: "ফটোইলেকট্রিক প্রভাব ব্যাখ্যা করেন কে?", options: ["নিউটন", "আইনস্টাইন", "ফ্যারাডে", "ওহম"], answer: "আইনস্টাইন" },
+  { type: "mcq", question: "ধাতব পরিবাহিতার জন্য দায়ী—", options: ["ইলেকট্রন", "প্রোটন", "নিউট্রন", "আয়ন"], answer: "ইলেকট্রন" },
+  { type: "mcq", question: "সিরিজ সংযোগে ভোল্টেজ বিভাজিত হয়?", options: ["না", "হ্যাঁ", "কখনো হয় না", "সব সময় হয়"], answer: "হ্যাঁ" },
+  { type: "mcq", question: "বিদ্যুৎ শক্তি = ?", options: ["VIt", "VI", "IR", "V²/R"], answer: "VIt" },
+  { type: "mcq", question: "নিউটনের তৃতীয় সূত্র বলে—", options: ["F = ma", "v = u + at", "প্রতিটি ক্রিয়ার সমান ও বিপরীত প্রতিক্রিয়া আছে", "W = Fs"], answer: "প্রতিটি ক্রিয়ার সমান ও বিপরীত প্রতিক্রিয়া আছে" },
+  { type: "mcq", question: "কোন যন্ত্র বল পরিমাপে ব্যবহৃত হয়?", options: ["স্প্রিং ব্যালান্স", "থার্মোমিটার", "ভল্টমিটার", "অ্যামিটার"], answer: "স্প্রিং ব্যালান্স" },
+  { type: "mcq", question: "তাপমাত্রা পরিমাপের একক—", options: ["সেলসিয়াস", "ফারেনহাইট", "কেলভিন", "সবগুলো"], answer: "সবগুলো" },
+  { type: "mcq", question: "পর্যবেক্ষণযোগ্য পরিমাণ কী?", options: ["ভর", "দৈর্ঘ্য", "সময়", "সবগুলো"], answer: "সবগুলো" }
+  ],
+  
+  
+  SscMath: [
+    {
+    type: "mcq",
+    question: "√১৬৯ এর মান কত?",
+    options: ["১২", "১৩", "১৪", "১৫"],
+    answer: "১৩"
+  },
+  {
+    type: "mcq",
+    question: "(a - b)² এর সূত্র কোনটি?",
+    options: ["a² + b² - 2ab", "a² - 2ab + b²", "a² + 2ab + b²", "a² - b²"],
+    answer: "a² - 2ab + b²"
+  },
+  {
+    type: "mcq",
+    question: "x² - 4x + 4 = 0 এর মূল কী?",
+    options: ["2, 2", "4, 0", "-2, -2", "1, 4"],
+    answer: "2, 2"
+  },
+  {
+    type: "mcq",
+    question: "কোনটি মৌলিক সংখ্যা?",
+    options: ["১", "২", "৪", "৬"],
+    answer: "২"
+  },
+  {
+    type: "mcq",
+    question: "৬ এর গুণিতক কোনটি নয়?",
+    options: ["১২", "১৮", "২৪", "২০"],
+    answer: "২০"
+  },
+  {
+    type: "mcq",
+    question: "২x + ৩ = ১১ হলে x এর মান কত?",
+    options: ["৪", "৫", "৩", "৬"],
+    answer: "৪"
+  },
+  {
+    type: "mcq",
+    question: "একটি বৃত্তের ব্যাস ১৪ সেমি হলে, পরিধি কত (π = ২২/৭ ধরে)?",
+    options: ["৪৪", "২২", "২৮", "৭"],
+    answer: "৪৪"
+  },
+  {
+    type: "mcq",
+    question: "১৫ এর শতকরা ২০ ভাগ কত?",
+    options: ["২", "৩", "৫", "৭"],
+    answer: "৩"
+  },
+  {
+    type: "mcq",
+    question: "(x - 1)(x + 1) = ?",
+    options: ["x² + 1", "x² - 1", "x² + x - 1", "x² - x + 1"],
+    answer: "x² - 1"
+  },
+  {
+    type: "mcq",
+    question: "x² = ৯ হলে x এর মান—",
+    options: ["৩", "-৩", "±৩", "০"],
+    answer: "±৩"
+  },
+  {
+    type: "mcq",
+    question: "এক ডজন = কত?",
+    options: ["১০", "১২", "২০", "২৪"],
+    answer: "১২"
+  },
+  {
+    type: "mcq",
+    question: "x² + 4x + 4 এর গুণনীয় রূপ কী?",
+    options: ["(x + 2)²", "(x + 4)²", "(x - 2)²", "(x - 4)²"],
+    answer: "(x + 2)²"
+  },
+  {
+    type: "mcq",
+    question: "x² - 36 = 0 সমীকরণের মূল কী?",
+    options: ["±5", "±6", "±3", "±4"],
+    answer: "±6"
+  },
+  {
+    type: "mcq",
+    question: "৯ × ৮ = ?",
+    options: ["৭২", "৬৩", "৮১", "৬৯"],
+    answer: "৭২"
+  },
+  {
+    type: "mcq",
+    question: "√১০০ = ?",
+    options: ["১০", "১২", "৯", "৮"],
+    answer: "১০"
+  },
+  {
+    type: "mcq",
+    question: "২৫% = কত ভগ্নাংশে?",
+    options: ["1/5", "1/4", "1/2", "1/3"],
+    answer: "1/4"
+  },
+  {
+    type: "mcq",
+    question: "একটি ত্রিভুজের কোণগুলোর যোগফল কত?",
+    options: ["১৮০°", "৯০°", "১২০°", "২৭০°"],
+    answer: "১৮০°"
+  },
+  {
+    type: "mcq",
+    question: "x² - x - 12 = 0 এর একটি মূল—",
+    options: ["৩", "-৪", "-৩", "২"],
+    answer: "৩"
+  },
+  {
+    type: "mcq",
+    question: "১০০ ÷ ৫ = ?",
+    options: ["২০", "২৫", "১৫", "৩০"],
+    answer: "২০"
+  },
+  {
+    type: "mcq",
+    question: "২, ৪, ৬, ৮,... ধারাটির ৫ম পদ কত?",
+    options: ["৮", "১০", "১২", "১৪"],
+    answer: "১০"
+  },
+  {
+    type: "mcq",
+    question: "√১২১ = ?",
+    options: ["১০", "১১", "১২", "১৩"],
+    answer: "১১"
+  },
+  {
+    type: "mcq",
+    question: "π এর আনুমানিক মান কত?",
+    options: ["3.14", "2.71", "1.41", "4.13"],
+    answer: "3.14"
+  },
+  {
+    type: "mcq",
+    question: "(a + b)² = ?",
+    options: ["a² + 2ab + b²", "a² - 2ab + b²", "a² + ab + b²", "a² + b²"],
+    answer: "a² + 2ab + b²"
+  },
+  {
+    type: "mcq",
+    question: "x² - 25 = 0 এর একটি মূল—",
+    options: ["৪", "৫", "-৪", "-৬"],
+    answer: "৫"
+  },
+  {
+    type: "mcq",
+    question: "৪ : ৫ অনুপাতে ৪৫ লিটার মিশ্রণে দুধ কত?",
+    options: ["২০", "২৫", "৩০", "৩৫"],
+    answer: "২৫"
+  },
+  {
+    type: "mcq",
+    question: "(-3)² + 5 × (-2) = ?",
+    options: ["-1", "-4", "-7", "-5"],
+    answer: "-4"
+  },
+  {
+    type: "mcq",
+    question: "√৮১ = ?",
+    options: ["৮", "৯", "১০", "১১"],
+    answer: "৯"
+  },
+  {
+    type: "mcq",
+    question: "২৫% এর ভগ্নাংশ রূপ কী?",
+    options: ["1/2", "1/3", "1/4", "1/5"],
+    answer: "1/4"
+  },
+  {
+    type: "mcq",
+    question: "x² + 5x + 6 = 0 সমীকরণের মূল কী?",
+    options: ["−2, −3", "2, 3", "1, −6", "−1, −6"],
+    answer: "−2, −3"
+  },
+  {
+    type: "mcq",
+    question: "πr² কোন রাশি নির্দেশ করে?",
+    options: ["পরিধি", "ব্যাস", "ক্ষেত্রফল", "গাণিতিক ধ্রুবক"],
+    answer: "ক্ষেত্রফল"
+  },
+  {
+    type: "mcq",
+    question: "৫x + ৭ = ১৭ সমীকরণ সমাধান কর।",
+    options: ["x = ২", "x = ১", "x = ৩", "x = ৪"],
+    answer: "x = ২"
+  },
+  {
+    type: "mcq",
+    question: "কোনটি অযৌক্তিক সংখ্যা?",
+    options: ["√২", "০.৫", "৩/৪", "১"],
+    answer: "√২"
+  },
+  {
+    type: "mcq",
+    question: "x² + 10x + 25 = 0 এর মূল কী?",
+    options: ["x = -5", "x = 5", "x = ±5", "x = 0"],
+    answer: "x = -5"
+  },
+  {
+    type: "mcq",
+    question: "বর্গক্ষেত্রের ক্ষেত্রফল নির্ণয়ের সূত্র কী?",
+    options: ["l × b", "πr²", "s × s", "2πr"],
+    answer: "s × s"
+  },
+  {
+    type: "mcq",
+    question: "১ কেজি = কত গ্রাম?",
+    options: ["১০০", "৫০০", "১০০০", "১৫০০"],
+    answer: "১০০০"
+  },
+  {
+    type: "mcq",
+    question: "৯ এর বিপরীত সংখ্যা কী?",
+    options: ["-৯", "৯", "০", "৯০"],
+    answer: "-৯"
+  },
+  {
+    type: "mcq",
+    question: "x² - 6x + 9 এর গুণফল রূপ কী?",
+    options: ["(x - 3)²", "(x + 3)²", "(x - 6)²", "(x + 6)²"],
+    answer: "(x - 3)²"
+  }
+    
+    ],
+  
+  SscMath02: [
+    
+    {
+    type: "mcq",
+    question: "√৪৯ = কত?",
+    options: ["৬", "৭", "৮", "৯"],
+    answer: "৭"
+  },
+  {
+    type: "mcq",
+    question: "একটি বর্গের বাহু ৫ সেমি হলে ক্ষেত্রফল কত?",
+    options: ["২০", "২৫", "৩০", "৩৫"],
+    answer: "২৫"
+  },
+  {
+    type: "mcq",
+    question: "x² - 9 = ০ সমীকরণের একটি মূল কী?",
+    options: ["১", "২", "৩", "৪"],
+    answer: "৩"
+  },
+  {
+    type: "mcq",
+    question: "২০% এর ভগ্নাংশ রূপ কী?",
+    options: ["1/2", "1/4", "1/5", "1/6"],
+    answer: "1/5"
+  },
+  {
+    type: "mcq",
+    question: "x² - 2x - 15 = 0 এর একটি মূল কত?",
+    options: ["-3", "5", "-5", "4"],
+    answer: "5"
+  },
+  {
+    type: "mcq",
+    question: "π এর মান সাধারণত কত ধরা হয়?",
+    options: ["3.14", "3.41", "2.71", "4.13"],
+    answer: "3.14"
+  },
+  {
+    type: "mcq",
+    question: "(x + 3)² এর বিস্তৃত রূপ কী?",
+    options: ["x² + 6x + 9", "x² - 6x + 9", "x² + 3x + 3", "x² + 9x + 3"],
+    answer: "x² + 6x + 9"
+  },
+  {
+    type: "mcq",
+    question: "একটি আয়তক্ষেত্রের দৈর্ঘ্য ৭ সেমি ও প্রস্থ ৫ সেমি হলে ক্ষেত্রফল কত?",
+    options: ["৩০", "৩৫", "৩৭", "৪০"],
+    answer: "৩৫"
+  },
+  {
+    type: "mcq",
+    question: "x² - 6x + 9 এর গুণনীয় রূপ কী?",
+    options: ["(x - 3)²", "(x + 3)²", "(x - 9)²", "(x + 6)²"],
+    answer: "(x - 3)²"
+  },
+  {
+    type: "mcq",
+    question: "১ কেজি = কত গ্রাম?",
+    options: ["১০০", "৫০০", "১০০০", "১৫০০"],
+    answer: "১০০০"
+  },
+  {
+    type: "mcq",
+    question: "1 মিটার = কত সেন্টিমিটার?",
+    options: ["১০", "১০০", "১০০০", "৫০০"],
+    answer: "১০০"
+  },
+  {
+    type: "mcq",
+    question: "৫x + ৭ = ১৭ সমাধান কর।",
+    options: ["x = ২", "x = ১", "x = ৩", "x = ৪"],
+    answer: "x = ২"
+  },
+  {
+    type: "mcq",
+    question: "x² + 6x + 9 = ?",
+    options: ["(x + 3)²", "(x - 3)²", "(x + 6)²", "(x + 9)²"],
+    answer: "(x + 3)²"
+  },
+  {
+    type: "mcq",
+    question: "একটি ঘনকের ১২টি বাহুর যোগফল ৬০ সেমি হলে এক বাহুর দৈর্ঘ্য কত?",
+    options: ["৫", "৬", "৭", "৮"],
+    answer: "৫"
+  },
+  {
+    type: "mcq",
+    question: "x² + 2x - 15 = 0 এর একটি মূল কত?",
+    options: ["৩", "৫", "-৫", "-৩"],
+    answer: "৩"
+  },
+  {
+    type: "mcq",
+    question: "√২৫৬ = ?",
+    options: ["১৫", "১৬", "১৭", "১৮"],
+    answer: "১৬"
+  },
+  {
+    type: "mcq",
+    question: "কোনটি একটি পূর্ণবর্গ সংখ্যা?",
+    options: ["৪৫", "৩৬", "২০", "৫০"],
+    answer: "৩৬"
+  },
+  {
+    type: "mcq",
+    question: "১ বর্গমিটার = কত বর্গসেন্টিমিটার?",
+    options: ["১০০", "১০০০", "১০০০০", "১০"],
+    answer: "১০০০০"
+  },
+  {
+    type: "mcq",
+    question: "কোনটি বীজগাণিতিক রাশি?",
+    options: ["৫", "২x", "৩ + ৪", "√২৫"],
+    answer: "২x"
+  },
+  {
+    type: "mcq",
+    question: "x² + 10x + 25 = 0 সমীকরণের মূল নির্ণয় কর।",
+    options: ["x = -5", "x = 5", "x = ±5", "x = 0"],
+    answer: "x = -5"
+  },
+  {
+    type: "mcq",
+    question: "৫ : ১০ অনুপাতে বড় অংশ কত (৪০ ভাগে)?",
+    options: ["১০", "২০", "২৫", "৩০"],
+    answer: "২৫"
+  },
+  {
+    type: "mcq",
+    question: "x² - 1 = ?",
+    options: ["(x + 1)²", "(x - 1)²", "(x - 1)(x + 1)", "x² + 1"],
+    answer: "(x - 1)(x + 1)"
+  },
+  {
+    type: "mcq",
+    question: "x² + 8x + 16 = ?",
+    options: ["(x + 4)²", "(x - 4)²", "(x + 8)²", "(x - 8)²"],
+    answer: "(x + 4)²"
+  },
+  {
+    type: "mcq",
+    question: "√১২১ = ?",
+    options: ["১০", "১১", "১২", "১৩"],
+    answer: "১১"
+  },
+  {
+    type: "mcq",
+    question: "৯ এর বিপরীত সংখ্যা কত?",
+    options: ["৯", "০", "-৯", "-১"],
+    answer: "-৯"
+  },
+  {
+    type: "mcq",
+    question: "x² - 36 = 0 সমীকরণের মূল কী?",
+    options: ["±6", "±4", "±5", "±3"],
+    answer: "±6"
+  },
+  {
+    type: "mcq",
+    question: "πr² কোন রাশি নির্দেশ করে?",
+    options: ["পরিধি", "ব্যাস", "ক্ষেত্রফল", "গাণিতিক ধ্রুবক"],
+    answer: "ক্ষেত্রফল"
+  },
+  {
+    type: "mcq",
+    question: "একটি ত্রিভুজের কোণগুলোর যোগফল কত?",
+    options: ["১৮০°", "৯০°", "২৭০°", "১৫০°"],
+    answer: "১৮০°"
+  },
+  {
+    type: "mcq",
+    question: "একটি বৃত্তের পরিধির সূত্র কী?",
+    options: ["2πr", "πr²", "πd", "πr"],
+    answer: "2πr"
+  },
+  {
+    type: "mcq",
+    question: "৩x + ২ = ১১ সমীকরণ সমাধান কর।",
+    options: ["৩", "২", "১", "৪"],
+    answer: "৩"
+  },
+  {
+    type: "mcq",
+    question: "x² + 5x + 6 এর একটি মূল কী?",
+    options: ["-2", "-3", "2", "3"],
+    answer: "-2"
+  },
+  {
+    type: "mcq",
+    question: "√১৪৪ = ?",
+    options: ["১১", "১২", "১৩", "১৪"],
+    answer: "১২"
+  },
+  {
+    type: "mcq",
+    question: "৫x × ২x = ?",
+    options: ["১০x", "১০x²", "৭x²", "৭x"],
+    answer: "১০x²"
+  },
+  {
+    type: "mcq",
+    question: "একটি সংখ্যা যদি ৩ ও ৪ দ্বারা বিভাজ্য হয়, তবে সেটি কোন সংখ্যার দ্বারা অবশ্যই বিভাজ্য?",
+    options: ["৬", "১২", "২৪", "৩৬"],
+    answer: "১২"
+  },
+  {
+    type: "mcq",
+    question: "√১০০০ ≈ কত?",
+    options: ["৩১.৬", "৩২", "৩০", "৩৩"],
+    answer: "৩১.৬"
+  },
+  {
+    type: "mcq",
+    question: "৩² + ৪² = ?",
+    options: ["২৫", "২৪", "২৬", "২৭"],
+    answer: "২৫"
+  },
+  {
+    type: "mcq",
+    question: "৪ এবং ৬ এর ল.সা.গু কত?",
+    options: ["১২", "১৮", "২৪", "৬"],
+    answer: "১২"
+  },
+  {
+    type: "mcq",
+    question: "√৬৪ = ?",
+    options: ["৬", "৭", "৮", "৯"],
+    answer: "৮"
+  },
+  {
+    type: "mcq",
+    question: "x² + 6x + 9 = ?",
+    options: ["(x + 3)²", "(x - 3)²", "(x + 6)²", "(x - 6)²"],
+    answer: "(x + 3)²"
+  }
+    
+  ] 
+  
+  
+};
+
+function startLogin() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const institution = document.getElementById("institution").value.trim();
+  if (!name || !email || !institution) return alert("Enter name, email, and institution");
+
+  currentUser = { name, email, institution };
+  document.getElementById("login").classList.remove("active");
+  document.getElementById("rules").classList.add("active");
+}
+
+function showCategory() {
+  document.getElementById("rules").classList.remove("active");
+  document.getElementById("category").classList.add("active");
+}
+
+function loadQuiz() {
+  currentCategory = document.getElementById("categorySelect").value;
+  document.getElementById("category").classList.remove("active");
+  document.getElementById("quiz").classList.add("active");
+
+  const quizForm = document.getElementById("quizForm");
+  quizForm.innerHTML = "";
+  questions[currentCategory].forEach((q, i) => {
+    let html = `<p>${i + 1}. ${q.question}</p>`;
+    if (q.type === "mcq") {
+      q.options.forEach(opt => {
+        html += `<label><input type="radio" name="q${i}" value="${opt}"> ${opt}</label><br>`;
+      });
+    } else if (q.type === "checkbox") {
+      q.options.forEach(opt => {
+        html += `<label><input type="checkbox" name="q${i}" value="${opt}"> ${opt}</label><br>`;
+      });
+    } else if (q.type === "short") {
+      html += `<input type="text" name="q${i}"><br>`;
+    }
+    quizForm.innerHTML += html;
+  });
+
+  timeLeft = 60;
+  document.getElementById("time").innerText = timeLeft;
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("time").innerText = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      submitQuiz();
+    }
+  }, 1000);
+}
+
+function submitQuiz() {
+  clearInterval(timer);
+  const form = document.forms["quizForm"];
+  const qset = questions[currentCategory];
+  let score = 0;
+  let preview = "";
+
+  qset.forEach((q, i) => {
+    let userAns = "";
+    let correct = false;
+    let correctAns = q.answer;
+
+    if (q.type === "mcq") {
+      userAns = form[`q${i}`]?.value || "No answer";
+      correct = userAns === q.answer;
+    } else if (q.type === "checkbox") {
+      const checked = [...form[`q${i}`]].filter(cb => cb.checked).map(cb => cb.value);
+      userAns = checked.length ? checked.join(", ") : "No answer";
+      correct = JSON.stringify(checked.sort()) === JSON.stringify(q.answer.sort());
+    } else if (q.type === "short") {
+      userAns = form[`q${i}`]?.value.trim() || "No answer";
+      correct = userAns.toLowerCase() === q.answer.toLowerCase();
+    }
+
+    preview += `Q${i + 1}: ${q.question}\n`;
+    preview += `Your answer: ${userAns} ${correct ? "✅" : "❌"}\n`;
+    preview += `Correct answer: ${Array.isArray(correctAns) ? correctAns.join(", ") : correctAns}\n\n`;
+
+    if (correct) score++;
+    else if (userAns !== "No answer") score -= 0.25;
+  });
+
+  document.getElementById("quiz").classList.remove("active");
+  document.getElementById("result").classList.add("active");
+  document.getElementById("scoreDisplay").innerText =
+    `Score: ${score.toFixed(2)} out of ${qset.length}`;
+
+  const attemptData = {
+    ...currentUser,
+    score: score.toFixed(2),
+    category: currentCategory,
+    preview
+  };
+
+  const emailKey = currentUser.email.replace(/\./g, '_');
+db.ref("attempts/" + emailKey).set(attemptData, error => {
+  if (error) {
+    alert("Error saving your attempt. Please try again.");
+  } else {
+    renderLeaderboard();
+  }
+});
+
+}
+
+function showLeaderboard() {
+  document.getElementById("result").classList.remove("active");
+  document.getElementById("leaderboard").classList.add("active");
+  renderLeaderboard();
+}
+
+function renderLeaderboard() {
+  const filter = document.getElementById("filterCategory").value;
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  const body = document.getElementById("leaderboardBody");
+  body.innerHTML = "";
+
+  db.ref("attempts").once("value", snapshot => {
+    let data = [];
+    snapshot.forEach(child => {
+      data.push({ key: child.key, ...child.val() });
+    });
+
+    if (filter !== "All") data = data.filter(e => e.category === filter);
+    if (search) data = data.filter(e => e.name.toLowerCase().includes(search) || e.email.includes(search));
+
+    data.sort((a, b) => b.score - a.score);
+
+    data.forEach((entry, i) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${entry.name}</td>
+        <td><a href="#" style="color:aqua;text-decoration:underline;" onclick='showPreview(\`${entry.preview}\`); return false;'>${entry.email}</a></td>
+        <td>${entry.institution}</td>
+        <td>${entry.score}</td>
+        <td>${entry.category}</td>
+        <td class="admin-btn"><button onclick="deleteEntry('${entry.key}')">Delete</button></td>
+      `;
+      body.appendChild(tr);
+    });
+  });
+}
+
+
+function showPreview(previewText) {
+  document.getElementById("leaderboard").classList.remove("active");
+  document.getElementById("previewContent").innerText = previewText;
+  document.getElementById("preview").classList.add("active");
+}
+
+function closePreview() {
+  document.getElementById("preview").classList.remove("active");
+  document.getElementById("leaderboard").classList.add("active");
+}
+
+function deleteEntry(key) {
+  if (confirm("Delete this entry?")) {
+    db.ref("attempts/" + key).remove().then(() => {
+      renderLeaderboard();
+    });
+  }
+}
+
+function adminLogin() {
+  const pass = prompt("Enter admin password:");
+  if (pass === "admin123") {
+    document.querySelectorAll(".admin-btn").forEach(e => e.style.display = "table-cell");
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
+</body>
+</html>
