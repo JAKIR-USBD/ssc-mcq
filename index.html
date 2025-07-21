@@ -212,7 +212,7 @@
     #leaderboard {
       max-width: 480px;
   margin: 80px auto;
-  padding: 30px;
+  padding: 10px;
   background: linear-gradient(135deg, gray, teal);
       color: lime;
   border-radius: 15px;
@@ -344,7 +344,7 @@ section.active {
     <option value="SscPhysics">SSC-Physics01</option>
     <option value="SscMath">SSC-Math01</option>
     <option value="SscMath02">SSC-Math02</option>
-<option value="SscAccounting01">SSC-Accounting01</option>
+    <option value="SscAccounting01">SSC-Accounting01</option>
     <option value="SscAccounting02">SSC-Accounting02</option>
   </select>
   <button onclick="loadQuiz()">Continue</button>
@@ -376,8 +376,8 @@ section.active {
       <option value="SscPhysics">SSC-Physics01</option>
       <option value="SscMath">SSC-Math01</option>
       <option value="SscMath02">SSC-Math02</option>
-<option value="SscAccounting01">SSC-Accounting01</option>
-    <option value="SscAccounting02">SSC-Accounting02</option>
+      <option value="SscAccounting01">SSC-Accounting01</option>
+      <option value="SscAccounting02">SSC-Accounting02</option>
     </select>
   </label>
   <input id="searchInput" placeholder="Search name or email" oninput="renderLeaderboard()">
@@ -951,8 +951,9 @@ const questions = {
   }
     
   ],
-
-SscAccounting01: [
+  
+  
+  SscAccounting01: [
     
     { type: "mcq", question: "হিসাববিজ্ঞানের জনক কে?", options: ["আল বীরুনি", "লুকা প্যাসিওলি", "আইজ্যাক নিউটন", "চার্লস বাবেজ"], answer: "লুকা প্যাসিওলি" },
   { type: "mcq", question: "জমা ও খরচের সমতা রক্ষা করা হয় কোন নীতির মাধ্যমে?", options: ["ব্যবসায়িক সত্তা", "দ্বৈত লেখা", "মূল্যায়ন", "নগদ ভিত্তিক"], answer: "দ্বৈত লেখা" },
@@ -1048,7 +1049,7 @@ SscAccounting01: [
   { type: "mcq", question: "হিসাববিজ্ঞানের মূল উদ্দেশ্য কী?", options: ["জবাবদিহিতা", "তথ্য প্রদান", "লাভ বৃদ্ধি", "অভ্যন্তরীণ নিয়ন্ত্রণ"], answer: "তথ্য প্রদান" }
     
     
-  ] 
+  ]
   
   
 };
